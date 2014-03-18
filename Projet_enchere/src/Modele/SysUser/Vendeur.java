@@ -18,6 +18,7 @@ import java.util.Date;
 public class Vendeur extends Utilisateur implements Observable {
   
     private ArrayList<Observer> listObserver;
+    private ArrayList<Enchere> listEnchere;
     
     
     public Vendeur(){
@@ -32,46 +33,51 @@ public class Vendeur extends Utilisateur implements Observable {
     
      public void creerEnchere(Enchere e){
         listEnchere.add(e);
-    }
-   
+    }   
      
     
-    public void publierEnchere(){
+    public void publierEnchere(int i){
     
         this.notifierObservateurs(); 
     }
     
-     public void retirerEnchere(int i){
+     public void retirerEnchere(int i) throws NoPubliedException{
     //EXCEPTION
-         //exception : you can't "retirer" if the "enchere" is not "publié"
+         //exception : you can't "retirer" if the "enchere" is not "publié" 
+        if(!listEnchere[i].isPublication()){
+	  throw new NoPubliedException("The enchere is not publied");}
+	  
         listEnchere.get(i).retirer();
+        
     }
      
-     public void mettrePrixMaximum(int i, float prix){
-           //EXCEPTION
+     public void mettrePrixMaximum(int i, float prix) throws MustBePositive {
+         if(prix <= 0){throw new MustBepositive("Prix Maximum must be positive")}
          
-         //exception : it must be > 0
          listEnchere.get(i).setPrixMaximum(prix); 
      }
      
      public void mettrePrixMinimum(int i, float prix){
          //EXCEPTION
          //exception : it must be > 0
+         if(prix <= 0){throw new MustBepositive("Prix Minimum must be positive")}
          listEnchere.get(i).setPrixMinimum(prix); 
      }
      
      public void mettrePrixReserve(int i, float prix){
-         //EXCEPTION
-      
+         //EXCEPTION      
          //exception : it must be > 0
+         if(prix <= 0){throw new MustBepositive("Prix Reserve must be positive")}
         listEnchere.get(i).setPrixReserve(prix);
      
      }
      
-     public void voirPrixDeReserve(int i){
+     public void voirPrixDeReserve(int i) throws Exception{
          //EXCEPTION
       
          //exception :the "prix de reserve" must exist
+         
+         if(listEnchere.get(i).getPrixReserve()==null){throw new Exception("PrixDeReserve does not exist")}
          listEnchere.get(i).getPrixReserve();
      }
 
@@ -86,7 +92,7 @@ public class Vendeur extends Utilisateur implements Observable {
     }
 
     @Override
-    public void notifierObservateurs() {
+    public void notifierObservateurs() { 
        for(int i=0;i<listObserver.size();i++)
                 {
                         Observer o =  listObserver.get(i);

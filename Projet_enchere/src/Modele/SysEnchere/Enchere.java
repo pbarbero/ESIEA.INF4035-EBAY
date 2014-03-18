@@ -87,6 +87,7 @@ public class Enchere implements Observer{
         return prixReserve;
     }
 
+
     @Override
     public void rafraichir(Observable o) {
         if(o instanceof Vendeur) //si cest le vendeur qui a notifié
