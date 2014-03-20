@@ -4,6 +4,10 @@
  */
 package Modele.SysEnchere;
 
+import java.util.ArrayList;
+
+import Modele.SysAlerting.Observable;
+import Modele.SysAlerting.Observer;
 import Modele.SysUser.Acheteur;
 
 /**
@@ -11,18 +15,26 @@ import Modele.SysUser.Acheteur;
  * @author ETD-P\boulkrinat
  */
 public class Offre {
-    private Acheteur a;
+    private Acheteur acheteur;
     private float prix;
+  
+    private ArrayList<Observer> listObserver;
     
-    public Offre(Acheteur a,float prix){
+    public Offre(Acheteur acheteur,float prix){
         
-        this.a=a;
+        this.acheteur=acheteur;
         this.prix=prix;
     }
 
     public float getPrix() {
         return prix;
     }
-    
+
+	public Acheteur getAcheteur() {
+		return acheteur;
+	}
+
+	
+
     
 }

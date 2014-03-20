@@ -4,6 +4,12 @@
  */
 package Modele.SysUser;
 
+import Modele.SysAlerting.AlertEnchereAnnulee;
+import Modele.SysAlerting.AlertOffreSuperieur;
+import Modele.SysAlerting.AlertOffreSurEnchere;
+import Modele.SysAlerting.AlertPrixDeReserveAtteint;
+import Modele.SysAlerting.Observable;
+import Modele.SysAlerting.Observer;
 import Modele.SysEnchere.Enchere;
 import Modele.SysEnchere.Offre;
 
@@ -12,7 +18,7 @@ import Modele.SysEnchere.Offre;
  *
  * @author ETD-P\boulkrinat
  */
-public class Acheteur extends Utilisateur{
+public class Acheteur extends Utilisateur implements Observer{
 //rajouter un observer???    
     
     public void EmettreOffre(Offre o, Enchere e){
@@ -23,6 +29,30 @@ public class Acheteur extends Utilisateur{
             e.getListOffre().add(o);
         }
     }
+
+	@Override
+	public void rafraichir(Observable o) {
+		 if(o instanceof AlertOffreSuperieur) 
+         {      
+			  
+			  System.out.println("Une offre avec un prix supérieur été faite par ");//completer
+                 
+         }  
+		 else  if(o instanceof AlertPrixDeReserveAtteint) 
+         {      
+			  
+			  System.out.println("Prix de reserve atteint par ");//completer
+                 
+         }  
+		 
+		 else if(o instanceof AlertEnchereAnnulee) 
+         {      
+			  
+			 System.out.println("Enchere Annulee par ");//completer   
+         }  
+		 
+		
+	}
 
    
 
