@@ -4,6 +4,7 @@
  */
 package Modele.SysUser;
 
+import Modele.SysAlerting.Alert;
 import Modele.SysAlerting.AlertEnchereAnnulee;
 import Modele.SysAlerting.AlertOffreSuperieur;
 import Modele.SysAlerting.AlertOffreSurEnchere;
@@ -29,7 +30,13 @@ public class Acheteur extends Utilisateur implements Observer{
             e.getListOffre().add(o);
         }
     }
+    
+    public void desactiverAlert(Alert a){
+    	//Pour désactiver une alerte
 
+    	a.supprimerObservateur(this);
+    	
+    }
 	@Override
 	public void rafraichir(Observable o) {
 		 if(o instanceof AlertOffreSuperieur) 

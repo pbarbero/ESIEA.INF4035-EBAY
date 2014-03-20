@@ -4,10 +4,13 @@
  */
 package Modele.SysUser;
 
+import Modele.SysAlerting.AlertOffreSuperieur;
+import Modele.SysAlerting.AlertOffreSurEnchere;
 import Modele.SysAlerting.Observable;
 import Modele.SysAlerting.Observer;
 import Modele.SysEnchere.Enchere;
 import Modele.SysEnchere.Objet;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -15,7 +18,7 @@ import java.util.Date;
  *
  * @author ETD-P\boulkrinat
  */
-public class Vendeur extends Utilisateur implements Observable {
+public class Vendeur extends Utilisateur implements Observable, Observer {
   
     private ArrayList<Observer> listObserver;
     private ArrayList<Enchere> listEnchere;
@@ -99,6 +102,16 @@ public class Vendeur extends Utilisateur implements Observable {
                         o.rafraichir(this); //pour chaque observer, on rafraichi l'information
                 }
     }
-    
+
+	@Override
+	public void rafraichir(Observable o) {
+		 if(o instanceof AlertOffreSurEnchere) 
+         {      
+			  
+			  System.out.println("Une offre a ete faite sur l enchere ");//completer
+              
+		
+         }
+	}
     
 }
