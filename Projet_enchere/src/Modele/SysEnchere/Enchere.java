@@ -86,6 +86,11 @@ public class Enchere implements Observer{
     public float getPrixReserve() {
         return prixReserve;
     }
+    
+    public Objet getObjet() {
+		return objet;
+	}
+
 
 
     @Override
@@ -97,6 +102,8 @@ public class Enchere implements Observer{
                         
                 }       
     }
+
+	
 
       
      

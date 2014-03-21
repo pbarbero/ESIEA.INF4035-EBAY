@@ -34,7 +34,7 @@ public class Acheteur extends Utilisateur implements Observer{
     public void desactiverAlert(Alert a){
     	//Pour désactiver une alerte
 
-    	a.supprimerObservateur(this);
+    	
     	
     }
 	@Override
@@ -55,7 +55,7 @@ public class Acheteur extends Utilisateur implements Observer{
 		 else if(o instanceof AlertEnchereAnnulee) 
          {      
 			  
-			 System.out.println("Enchere Annulee par ");//completer   
+			 System.out.println("Enchere sur l'objet"+((AlertEnchereAnnulee)o).getE().getObjet().identifiant+"a ete annulee par "+);//completer   
          }  
 		 
 		

@@ -20,12 +20,12 @@ import java.util.Date;
  */
 public class Vendeur extends Utilisateur implements Observable, Observer {
   
-    private ArrayList<Observer> listObserver;
+    private Map<Observer,Alert> listObserver;
     private ArrayList<Enchere> listEnchere;
     
     
     public Vendeur(){
-     listObserver=new ArrayList<Observer>();
+     listObserver=new Map<Observer,Alert>();
         
     }
     
@@ -41,16 +41,17 @@ public class Vendeur extends Utilisateur implements Observable, Observer {
     
     public void publierEnchere(int i){
     
-        this.notifierObservateurs(); 
+        this.notifierObservateurs(Alert); 
     }
     
      public void retirerEnchere(int i) throws NoPubliedException{
     //EXCEPTION
          //exception : you can't "retirer" if the "enchere" is not "publié" 
-        if(!listEnchere[i].isPublication()){
+        if(!listEnchere.get(i).isPublication()){
 	  throw new NoPubliedException("The enchere is not publied");}
 	  
         listEnchere.get(i).retirer();
+        this.notifierObservateurs(); //on previens que une enchere a ete annulee
         
     }
      
@@ -95,9 +96,10 @@ public class Vendeur extends Utilisateur implements Observable, Observer {
     }
 
     @Override
-    public void notifierObservateurs() { 
+    public void notifierObservateurs(Alert a) { 
        for(int i=0;i<listObserver.size();i++)
                 {
+    	   				if(listObserver.)
                         Observer o =  listObserver.get(i);
                         o.rafraichir(this); //pour chaque observer, on rafraichi l'information
                 }

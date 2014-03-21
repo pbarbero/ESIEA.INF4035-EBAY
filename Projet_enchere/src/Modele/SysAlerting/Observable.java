@@ -14,7 +14,7 @@ public interface Observable {
         public void ajouterObservateur(Observer o);
         // Supprimer un observer
         public void supprimerObservateur(Observer o);
-        // Notifier tous les observer lors d'un changement d'état
-        public void notifierObservateurs();
+        // Notifier tous les observer lors d'un changement d'état en fonction d'une alerte
+        public void notifierObservateurs(Alert a);
     
 }

@@ -2,9 +2,14 @@ package Modele.SysAlerting;
 
 import java.util.ArrayList;
 
-public class AlertEnchereAnnulee extends Alert {
+import Modele.SysEnchere.Enchere;
+import Modele.SysUser.Vendeur;
+
+public class AlertEnchereAnnulee {
+
+	//Classe representant une enchere annulee
+
 	
-	//Classe represantant : L'enchère a été annulée par le vendeur.
 	
   
 }

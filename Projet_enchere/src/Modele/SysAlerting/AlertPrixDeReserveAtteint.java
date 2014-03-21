@@ -6,5 +6,5 @@ public class AlertPrixDeReserveAtteint extends Alert {
 	
 	//Classe represantant : Le prix de réserve a été atteint par une offre
 	
- 
+	
 }
