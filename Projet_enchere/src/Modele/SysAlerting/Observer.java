@@ -13,7 +13,7 @@ package Modele.SysAlerting;
  */
 public interface Observer {
     //rafraichissement lorsqu'une nouvelle alerte est mise en place ! A voir avec publication
-      public void rafraichir(Observable o);
+      public void rafraichir(Observable o, Alert a);
 
     
 }

@@ -4,8 +4,7 @@
  */
 package Modele.SysUser;
 
-import Modele.SysAlerting.AlertOffreSuperieur;
-import Modele.SysAlerting.AlertOffreSurEnchere;
+import Modele.SysAlerting.Alert;
 import Modele.SysAlerting.Observable;
 import Modele.SysAlerting.Observer;
 import Modele.SysEnchere.Enchere;
@@ -13,20 +12,24 @@ import Modele.SysEnchere.Objet;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  *
  * @author ETD-P\boulkrinat
  */
-public class Vendeur extends Utilisateur implements Observable, Observer {
+public class Vendeur extends Utilisateur implements Observer{
   
     private Map<Observer,Alert> listObserver;
     private ArrayList<Enchere> listEnchere;
     
     
     public Vendeur(){
-     listObserver=new Map<Observer,Alert>();
-        
+      
+     listObserver=new HashMap<Observer,Alert>();
+
     }
     
     /*public void creerEnchere(Objet objet,int identifiant, String description, Date dateLimite){
@@ -41,7 +44,7 @@ public class Vendeur extends Utilisateur implements Observable, Observer {
     
     public void publierEnchere(int i){
     
-        this.notifierObservateurs(Alert); 
+    	listEnchere.get(i).setPublication(true);;
     }
     
      public void retirerEnchere(int i) throws NoPubliedException{
@@ -51,11 +54,11 @@ public class Vendeur extends Utilisateur implements Observable, Observer {
 	  throw new NoPubliedException("The enchere is not publied");}
 	  
         listEnchere.get(i).retirer();
-        this.notifierObservateurs(); //on previens que une enchere a ete annulee
-        
+             
     }
      
-     public void mettrePrixMaximum(int i, float prix) throws MustBePositive {
+
+	public void mettrePrixMaximum(int i, float prix) throws MustBePositive {
          if(prix <= 0){throw new MustBepositive("Prix Maximum must be positive")}
          
          listEnchere.get(i).setPrixMaximum(prix); 
@@ -85,35 +88,26 @@ public class Vendeur extends Utilisateur implements Observable, Observer {
          listEnchere.get(i).getPrixReserve();
      }
 
-    @Override
-    public void ajouterObservateur(Observer o) {
-        listObserver.add(o); //ajouter un observer
-    }
-
-    @Override
-    public void supprimerObservateur(Observer o) {
-       listObserver.remove(o); //supprimer un observer
-    }
-
-    @Override
-    public void notifierObservateurs(Alert a) { 
-       for(int i=0;i<listObserver.size();i++)
-                {
-    	   				if(listObserver.)
-                        Observer o =  listObserver.get(i);
-                        o.rafraichir(this); //pour chaque observer, on rafraichi l'information
-                }
-    }
-
 	@Override
-	public void rafraichir(Observable o) {
-		 if(o instanceof AlertOffreSurEnchere) 
-         {      
-			  
-			  System.out.println("Une offre a ete faite sur l enchere ");//completer
-              
-		
-         }
+	public void rafraichir(Observable o, Alert a) {
+	switch(a){
+	case AlertOffreSurEnchere :
+		System.out.println("une offre est faite sur votre Enchere sur l objet: " + ((Enchere)o).getObjet().identifiant);
+	 break;
+
+
+	default: 
+		System.out.println("Alerte non destinee");
 	}
+		
+	}
+
+  
     
+
+	
+
+	
+
+	
 }

@@ -11,9 +11,9 @@ package Modele.SysAlerting;
 public interface Observable {
     
       // Ajouter un observer
-        public void ajouterObservateur(Observer o);
+        public void ajouterObservateur(Observer o, Alert a);
         // Supprimer un observer
-        public void supprimerObservateur(Observer o);
+        public void supprimerObservateur(Observer o,Alert a);
         // Notifier tous les observer lors d'un changement d'état en fonction d'une alerte
         public void notifierObservateurs(Alert a);
     

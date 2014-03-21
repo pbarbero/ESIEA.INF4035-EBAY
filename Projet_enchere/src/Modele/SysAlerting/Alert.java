@@ -1,5 +1,5 @@
 package Modele.SysAlerting;
 
-public class Alert extends Alert{
-
+public enum Alert {
+	AlertEnchereAnnulee,AlertOffreSuperieur,AlertOffreSurEnchere,AlertPrixDeReserveAtteint
 }
