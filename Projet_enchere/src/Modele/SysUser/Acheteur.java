@@ -27,9 +27,11 @@ public class Acheteur extends Utilisateur implements Observer, Observable{
         }
     }
     
-    public void desactiverAlert(Alert a){
-    	//Pour désactiver une alerte
+    public void desactiverAlert(Enchere e, Alert a){
+    	//Pour dï¿½sactiver une alerte
 
+	//take observerList in Enchere and remove the observer (the Acheteur himself)
+	//must be like e.getObserverList.remove(this)
     	
     	
     }
@@ -40,7 +42,7 @@ public class Acheteur extends Utilisateur implements Observer, Observable{
 		switch (a) {
 
 		case AlertPrixDeReserveAtteint:
-			System.out.println("Le prix de réserve a ete atteint sur l enchere de l objet " + ((Enchere)o).getObjet().identifiant );
+			System.out.println("Le prix de rï¿½serve a ete atteint sur l enchere de l objet " + ((Enchere)o).getObjet().identifiant );
 			
 		 break;
 
