@@ -4,6 +4,8 @@
  */
 package Modele.SysUser;
 
+import Modele.Exceptions.NoPubliedException;
+import Modele.Exceptions.MustBePositive;
 import Modele.SysAlerting.Alert;
 import Modele.SysAlerting.Observable;
 import Modele.SysAlerting.Observer;
@@ -18,7 +20,7 @@ import java.util.Map;
 
 /**
  *
- * @author ETD-P\boulkrinat
+ * @author ETD-P\boulkrinat-simon-barbero
  */
 public class Vendeur extends Utilisateur implements Observer{
   
@@ -26,9 +28,10 @@ public class Vendeur extends Utilisateur implements Observer{
     private ArrayList<Enchere> listEnchere;
     
     
-    public Vendeur(){
-      
-     listObserver=new HashMap<Observer,Alert>();
+    public Vendeur(String nom, String prenom, String login, 
+    		ArrayList<Enchere> listEnchere) {
+    	super(nom, prenom, login, listEnchere);
+        listObserver=new HashMap<Observer,Alert>();
 
     }
     
@@ -37,14 +40,21 @@ public class Vendeur extends Utilisateur implements Observer{
     }
      A garder pour les tests?? */
     
-     public void creerEnchere(Enchere e){
-        listEnchere.add(e);
+     public void creerEnchere(Enchere e) throws NullPointerException{
+        if(e!=null)
+        {
+        	listEnchere.add(e);
+        }
+        else
+        	throw new NullPointerException();
+        
+       
     }   
      
     
     public void publierEnchere(int i){
     
-    	listEnchere.get(i).setPublication(true);;
+    	listEnchere.get(i).setPublication(true);
     }
     
      public void retirerEnchere(int i) throws NoPubliedException{
@@ -59,22 +69,22 @@ public class Vendeur extends Utilisateur implements Observer{
      
 
 	public void mettrePrixMaximum(int i, float prix) throws MustBePositive {
-         if(prix <= 0){throw new MustBepositive("Prix Maximum must be positive")}
+         if(prix <= 0){throw new MustBePositive("Prix Maximum must be positive");}
          
          listEnchere.get(i).setPrixMaximum(prix); 
      }
      
-     public void mettrePrixMinimum(int i, float prix){
+     public void mettrePrixMinimum(int i, float prix) throws MustBePositive{
          //EXCEPTION
          //exception : it must be > 0
-         if(prix <= 0){throw new MustBepositive("Prix Minimum must be positive")}
+         if(prix <= 0){throw new MustBePositive("Prix Minimum must be positive");}
          listEnchere.get(i).setPrixMinimum(prix); 
      }
      
-     public void mettrePrixReserve(int i, float prix){
+     public void mettrePrixReserve(int i, float prix) throws MustBePositive{
          //EXCEPTION      
          //exception : it must be > 0
-         if(prix <= 0){throw new MustBepositive("Prix Reserve must be positive")}
+         if(prix <= 0){throw new MustBePositive("Prix Reserve must be positive");}
         listEnchere.get(i).setPrixReserve(prix);
      
      }
@@ -84,7 +94,7 @@ public class Vendeur extends Utilisateur implements Observer{
       
          //exception :the "prix de reserve" must exist
          
-         if(listEnchere.get(i).getPrixReserve()==null){throw new Exception("PrixDeReserve does not exist")}
+         if(listEnchere.get(i).getPrixReserve()==0.0f){throw new Exception("PrixDeReserve does not exist");}
          listEnchere.get(i).getPrixReserve();
      }
 

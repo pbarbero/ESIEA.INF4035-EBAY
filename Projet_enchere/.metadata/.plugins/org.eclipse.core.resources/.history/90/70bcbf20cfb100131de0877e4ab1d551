@@ -1,0 +1,59 @@
+package Tests;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+public class VendeurTest {
+
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	@Test
+	public void testVendeur() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testCreerEnchere() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testPublierEnchere() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testRetirerEnchere() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testMettrePrixMaximum() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testMettrePrixMinimum() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testMettrePrixReserve() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testVoirPrixDeReserve() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testRafraichir() {
+		fail("Not yet implemented");
+	}
+
+}

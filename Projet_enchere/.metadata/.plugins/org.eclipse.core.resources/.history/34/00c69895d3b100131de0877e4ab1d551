@@ -1,0 +1,75 @@
+package Tests;
+
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.Map;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import Modele.SysAlerting.Alert;
+import Modele.SysAlerting.Observer;
+import Modele.SysEnchere.Enchere;
+import Modele.SysUser.Acheteur;
+
+public class VendeurTest {
+	
+    private Map<Observer,Alert> listObserver;
+    private ArrayList<Enchere> listEnchere;
+
+	@Before
+	public void setUp() throws Exception {
+	    this.listObserver = new HashMap<Observer,Alert>();
+	    listObserver.add(new Acheteur("barbero","pilar","5897542", 
+				null, null), new Alert("Alert.AlertEnchereAnnulee"));
+	    
+	    this.listEnchere  = new ArrayList<Enchere>();
+	}
+
+	@Test
+	public void testVendeur() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testCreerEnchere() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testPublierEnchere() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testRetirerEnchere() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testMettrePrixMaximum() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testMettrePrixMinimum() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testMettrePrixReserve() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testVoirPrixDeReserve() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testRafraichir() {
+		fail("Not yet implemented");
+	}
+
+}

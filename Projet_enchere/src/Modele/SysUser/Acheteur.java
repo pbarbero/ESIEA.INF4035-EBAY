@@ -4,6 +4,9 @@
  */
 package Modele.SysUser;
 
+import java.util.ArrayList;
+
+import Modele.Exceptions.*;
 import Modele.SysAlerting.Alert;
 import Modele.SysAlerting.Observable;
 import Modele.SysAlerting.Observer;
@@ -13,11 +16,17 @@ import Modele.SysEnchere.Offre;
 
 /**
  *
- * @author ETD-P\boulkrinat
+ * @author ETD-P\boulkrinat-simon-barbero
  */
-public class Acheteur extends Utilisateur implements Observer, Observable{
+public class Acheteur extends Utilisateur implements Observer, Observable{ // it's possible to have both?
 //rajouter un observer???    
     
+	public Acheteur(String nom,String prenom,String login, 
+							ArrayList <Enchere>listEnchere)
+	{
+		super(nom, prenom,login,listEnchere);
+	}
+	
     public void EmettreOffre(Offre o, Enchere e){
         //EXCEPTION
         //exception : thinking about it
@@ -28,9 +37,7 @@ public class Acheteur extends Utilisateur implements Observer, Observable{
     }
     
     public void desactiverAlert(Alert a){
-    	//Pour désactiver une alerte
-
-    	
+    	//Pour dï¿½sactiver une alerte    	
     	
     }
 
@@ -40,7 +47,7 @@ public class Acheteur extends Utilisateur implements Observer, Observable{
 		switch (a) {
 
 		case AlertPrixDeReserveAtteint:
-			System.out.println("Le prix de réserve a ete atteint sur l enchere de l objet " + ((Enchere)o).getObjet().identifiant );
+			System.out.println("Le prix de rï¿½serve a ete atteint sur l enchere de l objet " + ((Enchere)o).getObjet().identifiant );
 			
 		 break;
 

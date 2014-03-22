@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;Modele.Exceptions.Exception.java&apos; to &apos;NoPubliedException.java&apos;&#x0A;- Original project: &apos;foo&apos;&#x0A;- Original element: &apos;Modele.Exceptions.Exception.java&apos;&#x0A;- Renamed element: &apos;Modele.Exceptions.NoPubliedException.java&apos;" description="Rename compilation unit &apos;Exception.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;Modele.Exceptions{Exception.java" name="NoPubliedException.java" references="false" stamp="1395485636445" version="1.0"/>
+</session>

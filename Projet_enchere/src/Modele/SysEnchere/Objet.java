@@ -6,9 +6,15 @@ package Modele.SysEnchere;
 
 /**
  *
- * @author ETD-P\boulkrinat
+ * @author ETD-P\boulkrinat-simon-barbero
  */
 public class Objet {
    public int identifiant;
    public String description;
+   
+   public Objet(int identifiant, String description){
+	   this.identifiant = identifiant;
+	   this.description = description;	   
+	   
+   }
 }

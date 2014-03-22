@@ -6,7 +6,7 @@ package Modele.LogManagement;
 
 /**
  *
- * @author ETD-P\boulkrinat
+ * @author ETD-P\boulkrinat-simon-barbero
  */
 public class Log {
     //gestion de la log. Utiliser le framework vu en classe

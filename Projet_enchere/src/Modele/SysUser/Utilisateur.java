@@ -4,12 +4,13 @@
  */
 package Modele.SysUser;
 
-import Modele.SysEnchere.Enchere;
+import Modele.Exceptions.NoPubliedException;
+import Modele.Exceptions.MustBePositive;
+import Modele.SysEnchere.*;
 import java.util.ArrayList;
-
 /**
  *
- * @author ETD-P\boulkrinat
+ * @author ETD-P\boulkrinat-simon-barbero
  */
 public abstract class Utilisateur {
     
@@ -18,5 +19,17 @@ public abstract class Utilisateur {
     String login;
     ArrayList <Enchere>listEnchere;
     ArrayList <Enchere>listOffre;
+    
+    public Utilisateur(String nom, String prenom, String login, 
+    		ArrayList<Enchere> listEnchere) {
+    	this.nom = nom;
+    	this.prenom = prenom;
+    	this.login = login;
+    	this.listEnchere = listEnchere;
+    	//this.listOffre = listOffre;
+    	
+    	
+    }
+    
     
 }

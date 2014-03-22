@@ -1,0 +1,39 @@
+package Tests;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+public class EnchereTest {
+
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	@Test
+	public void testEnchere() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testRetirer() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testAjouterObservateur() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSupprimerObservateur() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testNotifierObservateurs() {
+		fail("Not yet implemented");
+	}
+
+}

@@ -1,0 +1,11 @@
+package Modele.Exceptions;
+
+public class NoPubliedException extends Exception { 
+
+//constructor method 
+  public NoPubliedException(String message) { super(message);  } 
+
+}
+
+
+

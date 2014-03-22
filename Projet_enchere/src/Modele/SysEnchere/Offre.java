@@ -12,7 +12,7 @@ import Modele.SysUser.Acheteur;
 
 /**
  *
- * @author ETD-P\boulkrinat
+ * @author ETD-P\boulkrinat-simon-barbero
  */
 public class Offre {
     private Acheteur acheteur;

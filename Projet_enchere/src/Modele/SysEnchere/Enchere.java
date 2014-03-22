@@ -4,6 +4,8 @@
  */
 package Modele.SysEnchere;
 
+import Modele.Exceptions.NoPubliedException;
+import Modele.Exceptions.MustBePositive;
 import Modele.SysUser.Vendeur;
 
 import java.util.ArrayList;
@@ -16,17 +18,15 @@ import Modele.SysAlerting.Observer;
 
 /**
  *
- * @author ETD-P\boulkrinat
+ * @author ETD-P\boulkrinat-simon-barbero
  */
 public class Enchere implements  Observable{
     
+   
+
+
    private boolean publication=false;  //mettre une enum ici.  
-   public void setPublication(boolean publication) {
-	this.publication = publication;
-}
-
-
-private Objet objet;
+   private Objet objet;
    private Date dateLimite;
    private float prixMinimum;
    private float prixMaximum;
@@ -49,7 +49,10 @@ private Objet objet;
             
 }
      */
-    
+   
+   public void setPublication(boolean publication) {
+	this.publication = publication;
+   }
 
    public void retirer(){
 	  
