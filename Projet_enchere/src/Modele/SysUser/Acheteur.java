@@ -6,7 +6,6 @@ package Modele.SysUser;
 
 import java.util.ArrayList;
 
-import Modele.Exceptions.*;
 import Modele.SysAlerting.Alert;
 import Modele.SysAlerting.Observable;
 import Modele.SysAlerting.Observer;

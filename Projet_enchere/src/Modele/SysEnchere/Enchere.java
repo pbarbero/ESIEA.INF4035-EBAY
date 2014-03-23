@@ -4,10 +4,6 @@
  */
 package Modele.SysEnchere;
 
-import Modele.Exceptions.NoPubliedException;
-import Modele.Exceptions.MustBePositive;
-import Modele.SysUser.Vendeur;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;

@@ -3,19 +3,14 @@ package Tests;
 import Modele.Exceptions.MustBePositive;
 import Modele.Exceptions.NoPubliedException;
 import Modele.SysAlerting.Alert;
-import static org.junit.Assert.*;
-
 import java.util.ArrayList;
 import java.util.Date;
-
 import org.junit.Before;
 import org.junit.Test;
-
 import Modele.SysEnchere.Enchere;
 import Modele.SysEnchere.Objet;
 import Modele.SysEnchere.Offre;
 import Modele.SysUser.Acheteur;
-import Modele.SysUser.Utilisateur;
 import Modele.SysUser.Vendeur;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

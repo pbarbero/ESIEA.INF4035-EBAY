@@ -4,8 +4,6 @@
  */
 package Modele.SysUser;
 
-import Modele.Exceptions.NoPubliedException;
-import Modele.Exceptions.MustBePositive;
 import Modele.SysEnchere.*;
 import java.util.ArrayList;
 /**
