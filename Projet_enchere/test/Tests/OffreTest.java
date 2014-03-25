@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import Modele.SysEnchere.Enchere;
+import Modele.SysEnchere.Offre;
 import Modele.SysUser.Acheteur;
 
 public class OffreTest {
@@ -18,8 +19,8 @@ public class OffreTest {
     @Before
     public void setUp() throws Exception{
     	this.prix = 1;
-    	this.acheteur = new Acheteur("barbero","pilar","5897542", 
-				null);
+    	 acheteur=new Acheteur("jean", "piere", "jp20014",new ArrayList<Enchere>(),new ArrayList<Offre>());
+           
     }
 	@Test
 	public void testOffre() {

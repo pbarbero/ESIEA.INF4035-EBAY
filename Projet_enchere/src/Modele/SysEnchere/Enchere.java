@@ -27,7 +27,7 @@ public class Enchere implements  Observable{
    
 
 
-   private boolean publication=false;  //mettre une enum ici.  
+   private EtatEnchere publication;  
    private Objet objet;
    private Date dateLimite;
 
@@ -48,14 +48,17 @@ public class Enchere implements  Observable{
        this.dateLimite=dateLimite;
        this.listObserver=new HashMap<Observer,List<Alert>>();
        this.listOffre=new ArrayList<Offre>();
+       //prix de base obligatoire pour n'importe quelle enchere (aucun => -1)
+       this.prixMinimum=-1;
+       this.prixMaximum=-1;
+       this.prixReserve=-1;
       
    }
 
    
    public void retirer(){
 	  
-            this.publication=false;
-            
+           
             this.notifierObservateurs(Alert.AlertEnchereAnnulee); //on previens que une enchere a ete annulee
             
 }
@@ -83,7 +86,7 @@ public class Enchere implements  Observable{
    //usage removeToObserverList(listObserver,(Observer)o, Alert...)
    }
    
-   public void setPublication(boolean publication) {
+   public void setPublication(EtatEnchere publication) {
 	this.publication = publication;
    }
    
@@ -100,7 +103,7 @@ public class Enchere implements  Observable{
     }
     
 
-    public boolean isPublication() {
+    public EtatEnchere getPublication() {
             return publication;
     }
     
@@ -114,30 +117,37 @@ public class Enchere implements  Observable{
    
 
      public void ajouterOffre(Offre o) {
-        
-    	 notifierObservateurs(Alert.AlertOffreSuperieur); //prevenir que une offre est faite
-    	 
-    	 if(o.getPrix()>=this.prixReserve) //si le prix est superieu au prix de reserve, on lance une alerte aux observateurs
+    	
+    	 if(this.prixReserve!=-1&&o.getPrix()>=this.prixReserve) //si le prix est superieur au prix de reserve (et que le prix de reserve existe donc != -1), on lance une alerte aux observateurs
     	 {
+          
     		 notifierObservateurs(Alert.AlertPrixDeReserveAtteint);
     		 
     	 }
     	  
-    	 for(int i=0;i<listOffre.size();i++){ //on va verifier dans la liste des offres si le prix de l offre est inferieur a l offre ajoute
-    		 if(o.getPrix()>listOffre.get(i).getPrix()){
+    	 if(!listOffre.isEmpty()&&o.getPrix()>getPrixMaximumListOffre()){ //si il y a eu au moins une offre
     			 notifierObservateurs(Alert.AlertOffreSuperieur);
     		 }
-    	 }
-         
-    
-    	 listOffre.add(o);
-         	 
-    	
     	 
-
+         
+         notifierObservateurs(Alert.AlertOffreSurEnchere); //notifier vendeur qu une offre est faite sur son annonce
+    	 listOffre.add(o);
+   
      }
     
-     public float getPrixMaximum() {
+    public float getPrixMaximumListOffre() { //change to Collections.max...
+        float prixMax=0;
+        for(int i=0;i<listOffre.size();i++){
+            for(int j=i;j<listOffre.size();j++){
+                if(listOffre.get(i).getPrix()>listOffre.get(j).getPrix()){
+                    prixMax=listOffre.get(i).getPrix();
+                }
+            }
+        }
+        return prixMax; 
+    }
+     
+    public float getPrixMaximum() {
         return prixMaximum;
     }
 
@@ -156,7 +166,7 @@ public class Enchere implements  Observable{
 
 	  @Override
 	    public void ajouterObservateur(Observer o, Alert a) {
-	        listObserver.put(o,a); //ajouter un observer pour un type d'alert
+	       addToObserverList(listObserver,o,a); //ajouter un observer pour un type d'alert
 	    }
 
 	    @Override
@@ -172,11 +182,10 @@ public class Enchere implements  Observable{
 		public void notifierObservateurs(Alert a) {
 			for (Observer key : listObserver.keySet()) { //iterator??
 	    		
-	  		  if(listObserver.get(key) == a){
+	  		  if(listObserver.get(key).contains(a)){
 	  			  
 	  			  key.rafraichir(this,a);
 	  		  }
-	  		  //System.out.println("key: " + key + " value: " + map.get(key));
 	  		}
 			
 		}

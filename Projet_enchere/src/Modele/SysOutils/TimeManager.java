@@ -5,6 +5,7 @@
 package Modele.SysOutils;
 
 import Modele.SysEnchere.Enchere;
+import Modele.SysEnchere.EtatEnchere;
 import java.util.Date;
 
 /**
@@ -22,7 +23,8 @@ public class TimeManager {
     }
     
     public void verifierDate(Enchere e){
-        if(future.after(e.getDateLimite())){
+        if(future.before(e.getDateLimite())){
+            e.setPublication(EtatEnchere.TERMINE);//l enchere est termine
             e.retirer();
         }
     }

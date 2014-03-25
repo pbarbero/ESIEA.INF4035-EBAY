@@ -10,6 +10,7 @@ import Modele.SysAlerting.Alert;
 import Modele.SysAlerting.Observable;
 import Modele.SysAlerting.Observer;
 import Modele.SysEnchere.Enchere;
+import Modele.SysEnchere.EtatEnchere;
 import Modele.SysEnchere.Objet;
 import Modele.SysEnchere.Offre;
 
@@ -44,6 +45,7 @@ public class Vendeur extends Utilisateur implements Observer{
      public void creerEnchere(Enchere e) throws NullPointerException{
         if(e!=null)
         {
+                e.setPublication(EtatEnchere.CREE);//Enchere creee
         	listEnchere.add(e);
         }
         else
@@ -55,15 +57,16 @@ public class Vendeur extends Utilisateur implements Observer{
     
     public void publierEnchere(int i){
     
-    	listEnchere.get(i).setPublication(true);
+    	listEnchere.get(i).setPublication(EtatEnchere.PUBLIE);
     }
     
      public void retirerEnchere(int i) throws NoPubliedException{
     //EXCEPTION
          //exception : you can't "retirer" if the "enchere" is not "publié" 
-        if(!listEnchere.get(i).isPublication()){
+        if(!(listEnchere.get(i).getPublication()==EtatEnchere.PUBLIE)){
 	  throw new NoPubliedException("The enchere is not publied");}
 	  
+        listEnchere.get(i).setPublication(EtatEnchere.ANNULE);
         listEnchere.get(i).retirer();
              
     }
@@ -90,13 +93,9 @@ public class Vendeur extends Utilisateur implements Observer{
      
      }
      
-     public void voirPrixDeReserve(int i) throws Exception{
-         //EXCEPTION
-      
-         //exception :the "prix de reserve" must exist
-         
+     public float voirPrixDeReserve(int i) throws Exception{ 
          if(listEnchere.get(i).getPrixReserve()==0.0f){throw new Exception("PrixDeReserve does not exist");}
-         listEnchere.get(i).getPrixReserve();
+         return listEnchere.get(i).getPrixReserve();
      }
 
 	@Override
@@ -108,7 +107,7 @@ public class Vendeur extends Utilisateur implements Observer{
 
 
 	default: 
-		System.out.println("Alerte non destinee");
+		
 	}
 		
 	}
