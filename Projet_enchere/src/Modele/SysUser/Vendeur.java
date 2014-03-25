@@ -11,6 +11,7 @@ import Modele.SysAlerting.Observable;
 import Modele.SysAlerting.Observer;
 import Modele.SysEnchere.Enchere;
 import Modele.SysEnchere.Objet;
+import Modele.SysEnchere.Offre;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,12 +26,12 @@ import java.util.Map;
 public class Vendeur extends Utilisateur implements Observer{
   
     private Map<Observer,Alert> listObserver;
-    private ArrayList<Enchere> listEnchere;
+ 
     
-    
-    public Vendeur(String nom, String prenom, String login, 
-    		ArrayList<Enchere> listEnchere) {
-    	super(nom, prenom, login, listEnchere);
+    public Vendeur(String nom,String prenom,String login,ArrayList <Enchere>listEnchere,ArrayList <Offre>listOffre)
+    {
+		super(nom, prenom,login,listEnchere,listOffre);
+	
         listObserver=new HashMap<Observer,Alert>();
 
     }

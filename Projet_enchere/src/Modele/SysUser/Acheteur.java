@@ -18,13 +18,12 @@ import Modele.SysEnchere.Offre;
  *
  * @author ETD-P\boulkrinat-simon-barbero
  */
-public class Acheteur extends Utilisateur implements Observer, Observable{ // it's possible to have both?
+public class Acheteur extends Utilisateur implements Observer{
 //rajouter un observer???    
     
-	public Acheteur(String nom,String prenom,String login, 
-							ArrayList <Enchere>listEnchere)
+	public Acheteur(String nom,String prenom,String login,ArrayList <Enchere>listEnchere,ArrayList <Offre>listOffre)
 	{
-		super(nom, prenom,login,listEnchere);
+		super(nom, prenom,login,listEnchere,listOffre);
 	}
 	
     public void EmettreOffre(Offre o, Enchere e){
@@ -32,12 +31,22 @@ public class Acheteur extends Utilisateur implements Observer, Observable{ // it
         //exception : thinking about it
         if(e.isPublication() && !listEnchere.contains(e) && o.getPrix()>e.getPrixMinimum()){ //L'annonce est-elle publiée et l'acheteur est-il le propriétaire de cette annonce et le prix de l'offre est-elle bien supérieur au prix minimum?
             //voir si c'est possible d'utiliser les exceptions plutot...pour message d'erreurs personnalisés.
+           
             e.ajouterOffre(o);
         }
     }
     
-    public void desactiverAlert(Alert a){
-    	//Pour d�sactiver une alerte    	
+    public void desactiverAlert(Alert a, Enchere e){
+    	//Pour d�sactiver une alerte 
+        for (Observer key : e.getListObserver().keySet()) { //iterator??
+	    		
+	  		  if(e.getListObserver().get(key) == a){
+	  			  
+	  			  e.getListObserver().remove(key);
+	  		  }
+	  		}
+        
+        
     	
     }
 
@@ -65,29 +74,5 @@ public class Acheteur extends Utilisateur implements Observer, Observable{ // it
 		}
 		
 	}
-
-	@Override
-	public void ajouterObservateur(Observer o, Alert a) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void supprimerObservateur(Observer o, Alert a) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void notifierObservateurs(Alert a) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
-
-   
-
-   
     
 }

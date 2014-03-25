@@ -9,7 +9,7 @@ import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 
-import Modele.Exceptions.MustBePositive;
+import Modele.Exceptions.*;
 import Modele.SysAlerting.Alert;
 import Modele.SysAlerting.Observer;
 import Modele.SysEnchere.Enchere;

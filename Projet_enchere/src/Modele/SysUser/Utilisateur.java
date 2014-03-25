@@ -18,18 +18,32 @@ public abstract class Utilisateur {
     String prenom;
     String login;
     ArrayList <Enchere>listEnchere;
-    ArrayList <Enchere>listOffre;
+    ArrayList <Offre>listOffre;
     
     public Utilisateur(String nom, String prenom, String login, 
-    		ArrayList<Enchere> listEnchere) {
+    		ArrayList<Enchere> listEnchere, ArrayList<Offre> listOffre) {
     	this.nom = nom;
     	this.prenom = prenom;
     	this.login = login;
     	this.listEnchere = listEnchere;
-    	//this.listOffre = listOffre;
+    	this.listOffre = listOffre;
     	
     	
     }
+    
+      public String getLogin() {
+        return login;
+    }
+    
+    public ArrayList<Enchere> getListEnchere() {
+        return listEnchere;
+    }
+
+
+    public ArrayList<Offre> getListOffre() {
+        return listOffre;
+    }
+
     
     
 }

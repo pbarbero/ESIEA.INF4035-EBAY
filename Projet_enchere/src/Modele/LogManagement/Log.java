@@ -4,10 +4,13 @@
  */
 package Modele.LogManagement;
 
+ import java.util.logging.Logger;
 /**
  *
  * @author ETD-P\boulkrinat-simon-barbero
  */
 public class Log {
-    //gestion de la log. Utiliser le framework vu en classe
+    //gestion des logs
+
+private final static Logger LOGGER = Logger.getLogger(MyClass.class .getName()); 
 }
