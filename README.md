@@ -1,4 +1,6 @@
-ESIEA.INF4035-EBAY
-==================
+School project, subject ESIEA.INF4035
+=====================================
 
-Conception et architecture d'une plate-forme web de gestion d/enchères type &lt;&lt;eBay>>
+Design and conception of a management web app, eBay kind.
+
+Conception et architecture d'une plate-forme web de gestion d/enchères type eBay.
